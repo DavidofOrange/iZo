@@ -8,14 +8,46 @@ exports.seed = function(knex) {
         { 
           name: 'BAR WOODY',
           postal_code: '180-0004',
-          prefecture: ' 東京都',
-          address1: '武蔵野市吉祥寺本町1丁目10−8',
+          prefecture: '東京都',
+          address1: '武蔵野市吉祥寺本町1丁目10-8',
           address2: '山崎ビル',
-          city: '武蔵野市',
-          capacity_status: 'open',
+          capacity_status: 'med',
           latitude: 35.70602836971596,
           longitude: 139.5789063425672,
-          owner_id: '259f8fae-457d-441c-9c2f-9fe6de39761a'
+          owner_id: '3325b376-8853-4e6a-a876-0334a4e04ded'
+        },
+        { 
+          name: 'EDY’S Bar',
+          postal_code: '160-0021',
+          prefecture: '東京都',
+          address1: '新宿区歌舞伎町2丁目32-4',
+          address2: '柏崎造園ビル',
+          capacity_status: 'low',
+          latitude: 35.6979898916492,
+          longitude: 139.7026638723045,
+          owner_id: '3325b376-8853-4e6a-a876-0334a4e04ded'
+        },
+        { 
+          name: 'B BAR ROPPONGI',
+          postal_code: '106-0032',
+          prefecture: '東京都',
+          address1: '港区六本木6丁目12-1',
+          address2: 'ヒルズ けやき坂通り レジデンスA棟',
+          capacity_status: 'high',
+          latitude: 35.659049072460775,
+          longitude: 139.72875052530563,
+          owner_id: '6d237944-0e2d-4f33-8d0a-47354978dde1'
+        },
+        { 
+          name: 'R',
+          postal_code: '111-0034',
+          prefecture: '東京都',
+          address1: '台東区雷門2丁目16-11',
+          address2: '',
+          capacity_status: 'med',
+          latitude: 35.710922248046955,
+          longitude: 139.79534482689786,
+          owner_id: '6d237944-0e2d-4f33-8d0a-47354978dde1'
         },
       ]);
     });

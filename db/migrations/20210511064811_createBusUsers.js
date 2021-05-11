@@ -6,9 +6,10 @@ exports.up = async (knex) => {
 
     return knex.schema.createTable('bus_users', table => {
 		table.uuid('id').primary().defaultTo(knex.raw('uuid_generate_v4()'));
-		table.text('username').notNullable().unique();
+		table.text('email').notNullable().unique();
 		table.text('password').notNullable();
-        table.timestamps(true, true);
+    table.text('stripe_id');
+    table.timestamps(true, true);
     })
   
 };

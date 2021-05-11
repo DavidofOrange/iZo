@@ -1,4 +1,4 @@
-const { parse } = require("pg-connection-string");
+const { parse } = require('pg-connection-string');
 
 let pgParsed;
 
