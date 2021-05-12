@@ -53,7 +53,7 @@ class BusinessController {
                 prefecture: prefecture,
                 address1: address1,
                 address2: address2,
-                capacity_status: "closed",
+                capacity_status: 3,
                 latitude: lat,
                 longitude: lng,
                 owner_id: ownerId,

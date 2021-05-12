@@ -11,7 +11,7 @@ exports.up = async (knex) => {
 		table.text('prefecture').notNullable();
 		table.text('address1').notNullable();
 		table.text('address2');
-		table.text('capacity_status').notNullable();
+		table.integer('capacity_status').notNullable();
 		table.float('latitude').notNullable();
 		table.float('longitude').notNullable();
 		table.uuid('owner_id')
