@@ -9,7 +9,7 @@
         <GmapMarker
             v-for="(place, index) in places"
             :key="index"
-            :position="place.coords"
+            :position="{lat: place.latitude, lng: place.longitude}"
             @click="toggleInfoBox(place, index)"
         />
        <!-- <InfoBox  

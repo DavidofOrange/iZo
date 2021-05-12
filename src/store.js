@@ -1,7 +1,7 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import axios from "axios"
-import locationsData from "./utils/default_places"
+// import locationsData from "./utils/default_places"
 import {gmapApi} from "vue2-google-maps"
 
 Vue.use(Vuex);
@@ -12,7 +12,7 @@ export default new Vuex.Store({
         google: gmapApi,
         places: [{}],
         centerCoords: { lat: 35.6806921503547 , lng: 139.75187940573224 },
-        zoom: 10,
+        zoom: 15,
         loggedIn: false,
         showBusinessView: false,
         user: {},
@@ -59,7 +59,6 @@ export default new Vuex.Store({
 
         setCenter(state, coords) {
             state.centerCoords = coords
-            state.zoom = 15
         },
 
         setBusinessList(state, businessList) {
@@ -68,15 +67,20 @@ export default new Vuex.Store({
 
         setUser(state, user) {
             state.user = user
+        },
+
+        setZoom(state, zoom) {
+            state.zoom = zoom
         }
 
     },
 
     actions: {
-        async getPlaces({ commit }) {
+        async getPlaces({ state }) {
             try {
-                // const res = await axios.post("/", query)
-                commit("setPlaces", locationsData.data.location)
+                const res = await axios.get(`/api/businesses/?lat=${state.centerCoords.lat}&lng=${state.centerCoords.lng}`)
+                console.log(res.data);
+                // commit("setPlaces", res.data)
 
             } catch (err) {
                 console.error(err)

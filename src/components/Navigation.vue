@@ -54,6 +54,8 @@ export default {
 
         search() {
             this.$store.dispatch("getCoords", this.searchInput)
+            this.$store.dispatch("getPlaces")
+            this.$store.commit("setZoom", 16)
 
         }
     }
