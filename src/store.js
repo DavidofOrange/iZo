@@ -85,10 +85,15 @@ export default new Vuex.Store({
 
         async getCoords({commit}, searchInput) {
             try {
-                const res = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${searchInput}&key=AIzaSyBN_Xp-EDhMj_SmTAppedBb4o4KFd6uj5E`)
-                console.log(res)
+                const data = await axios.get(`http://api.positionstack.com/v1/forward?access_key=398eab52cb4a639899b5f91cb6bed03a&query=${searchInput}`)
+                console.log(data.data.data)
 
-                commit("setCenter")
+                const coords = {
+                    lat: data.data.data[0].latitude,
+                    lng: data.data.data[0].longitude
+                }
+
+                commit("setCenter", coords)
             } catch (err) {
                 console.error(err)
             }

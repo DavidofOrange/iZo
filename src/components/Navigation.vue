@@ -2,7 +2,7 @@
     <div class="nav-container">
     <nav class="navbar navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand">PUBFINDER</a>
+            <a class="navbar-brand">iZO</a>
             <form class="d-flex">
                 <div class="nav-item" v-if="!this.$store.state.loggedIn" @click="login">Sign In</div>
                 <div class="nav-item" v-if="this.$store.state.loggedIn" @click="settings">{{this.$store.state.user.username}}</div>

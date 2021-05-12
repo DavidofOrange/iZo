@@ -5,9 +5,6 @@
     <CreateAccount v-if="this.$store.state.showCreateAccount" />
     <Login v-if="this.$store.state.showLogin" />
     <Navigation v-if="!this.$store.state.showLogin && !this.$store.state.showCreateAccount && !this.$store.state.showBusinessView && !this.$store.state.showAddBusiness" />
-    <div class="spinner-border" role="status">
-      <span class="sr-only">Loading...</span>
-    </div>
     <Map v-if="!this.$store.state.showLogin && !this.$store.state.showCreateAccount && !this.$store.state.showBusinessView && !this.$store.state.showAddBusiness" />
   </div>
 </template>
