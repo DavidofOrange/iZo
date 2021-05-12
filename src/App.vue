@@ -1,21 +1,25 @@
 <template>
   <div id="app" class="components-container">
     <AddBusiness v-if="this.$store.state.showAddBusiness" />
-    <BusinessView v-if="this.$store.state.showBusinessView && this.$store.state.user.type === 'business'" />
+    <BusinessView v-if="this.$store.state.showBusinessView && this.$store.state.user.userType === 'Business'" />
+    <SubscribeView v-if="this.$store.state.showSubscribeView && this.$store.state.user.userType === 'Business'" />
+    <PaymentView v-if="this.$store.state.showPaymentView && this.$store.state.user.userType === 'Business'" />
     <CreateAccount v-if="this.$store.state.showCreateAccount" />
     <Login v-if="this.$store.state.showLogin" />
-    <Navigation v-if="!this.$store.state.showLogin && !this.$store.state.showCreateAccount && !this.$store.state.showBusinessView && !this.$store.state.showAddBusiness" />
-    <Map v-if="!this.$store.state.showLogin && !this.$store.state.showCreateAccount && !this.$store.state.showBusinessView && !this.$store.state.showAddBusiness" />
+    <Navigation v-if="!this.$store.state.showLogin && !this.$store.state.showCreateAccount && !this.$store.state.showBusinessView && !this.$store.state.showAddBusiness && !this.$store.state.showSubscribeView && !this.$store.state.showPaymentView" />
+    <Map v-if="!this.$store.state.showLogin && !this.$store.state.showCreateAccount && !this.$store.state.showBusinessView && !this.$store.state.showAddBusiness && !this.$store.state.showSubscribeView && !this.$store.state.showPaymentView" />
   </div>
 </template>
 
 <script>
 import BusinessView from "./components/BusinessView"
-import Map from "./components/Map";
-import Navigation from "./components/Navigation";
-import Login from "./components/Login";
-import CreateAccount from "./components/CreateAccount";
+import Map from "./components/Map"
+import Navigation from "./components/Navigation"
+import Login from "./components/Login"
+import CreateAccount from "./components/CreateAccount"
 import AddBusiness from "./components/AddBusiness"
+import SubscribeView from "./components/SubscribeView"
+import PaymentView from "./components/PaymentView"
 // import InfoBox from "./components/InfoBox";
 
 export default {
@@ -27,7 +31,9 @@ export default {
     CreateAccount,
     // InfoBox,
     BusinessView,
-    AddBusiness
+    AddBusiness,
+    SubscribeView,
+    PaymentView
 },
 
   beforeMount() {

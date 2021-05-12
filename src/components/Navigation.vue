@@ -39,7 +39,7 @@ export default {
 
     methods: {
         settings() {
-            if (this.$store.state.user.type === "business") {
+            if (this.$store.state.user.userType === "Business") {
                 this.$store.commit("setShowsToFalse")
                 this.$store.commit("setShowBusinessView")
             } else {

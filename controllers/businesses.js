@@ -39,7 +39,7 @@ class BusinessController {
 
     async postBusiness(req, res) {
         try {
-            const name = req.body.name;
+            const name = req.body.busName;
             const postalCode = req.body.postalCode;
             const prefecture = req.body.prefecture;
             const address1 = req.body.address1;
@@ -58,8 +58,8 @@ class BusinessController {
                 longitude: lng,
                 owner_id: ownerId,
             };
-            const createdBusiness = await db('businesses').insert(business).returning(['id'])
-            res.send(createdBusiness);
+            const [createdBusId] = await db('businesses').insert(business).returning(['id'])
+            res.send(createdBusId);
         } catch (err) {
             console.log(err);
             res.status(400).end();

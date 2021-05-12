@@ -10,7 +10,7 @@
                 <div class="card-header" :id="`heading${collapseCounter[index]}`">
                     <h2 class="mb-0">
                     <button class="btn btn-link" type="button" data-toggle="collapse" :data-target="`#collapse${collapseCounter[index]}`" aria-expanded="true" :aria-controls="`collapse${collapseCounter[index]}`">
-                        {{business.name}}
+                        {{business.busName}}
                     </button>
                     </h2>
                 </div>
@@ -20,11 +20,12 @@
                         <div class="capacity-title">
                         <div>Open</div><div>Some Seats</div><div>Full</div><div>Closed</div>
                         </div>
-                        <input type="range" class="form-range" min="0" max="3" :value="business.capacity" 
+                        <input type="range" class="form-range" min="0" max="3" :value="business.capacityStatus" 
                             @change.prevent="showSaveNewCapacityToggle({
                                 element: collapseCounter[index], 
                                 business: business})" id="customRange2" :ref="`capacity${collapseCounter[index]}`">
                     </div>
+                    <a href="#" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true" @click.prevent="goPremium(business.busId)">Go Premium</a>
                 </div>
             </div>
         </div>
@@ -84,7 +85,13 @@ export default {
 
         goHome() {
             this.$store.commit("setShowsToFalse")
-        }
+        },
+
+        goPremium(busId) {
+            this.$store.dispatch("setBussinessId", busId)
+            this.$store.commit("setShowsToFalse")
+            this.$store.commit("setShowSubscribeView")
+        },
     }
 
 }
