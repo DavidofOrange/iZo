@@ -26,7 +26,7 @@ exports.seed = function(knex) {
           prefecture: '東京都',
           address1: '新宿区歌舞伎町2丁目32-4',
           address2: '柏崎造園ビル',
-          capacity_status: 2,
+          capacity_status: 1,
           latitude: 35.6979898916492,
           longitude: 139.7026638723045,
           owner_id: '3325b376-8853-4e6a-a876-0334a4e04ded',
