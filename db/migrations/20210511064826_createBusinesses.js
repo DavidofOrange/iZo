@@ -16,9 +16,13 @@ exports.up = async (knex) => {
 		table.float('longitude').notNullable();
 		table.uuid('owner_id')
             .unsigned()
-            .references('bus_users.id')
+            .references('users.id')
             .onUpdate('CASCADE')
             .onDelete('CASCADE');
+		table.text('slogan');
+		table.text('open_hours');
+		table.text('theme');
+		table.text('specials');
         table.timestamps(true, true);
     })
 };

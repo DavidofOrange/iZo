@@ -4,7 +4,7 @@ exports.up = async (knex) => {
 		table.text('id').primary();
         table.uuid('user_id')
             .unsigned()
-            .references('bus_users.id')
+            .references('users.id')
             .onUpdate('CASCADE')
             .onDelete('CASCADE');
 		table.uuid('bus_id')

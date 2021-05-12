@@ -14,7 +14,11 @@ exports.seed = function(knex) {
           capacity_status: 'med',
           latitude: 35.70602836971596,
           longitude: 139.5789063425672,
-          owner_id: '3325b376-8853-4e6a-a876-0334a4e04ded'
+          owner_id: '3325b376-8853-4e6a-a876-0334a4e04ded',
+          slogan: 'Come on down!',
+          open_hours: '11:00am - 8:00pm',
+          theme: 'Classy',
+          specials: 'Free vodka before 7pm'
         },
         { 
           name: 'EDY’S Bar',
@@ -25,7 +29,7 @@ exports.seed = function(knex) {
           capacity_status: 'low',
           latitude: 35.6979898916492,
           longitude: 139.7026638723045,
-          owner_id: '3325b376-8853-4e6a-a876-0334a4e04ded'
+          owner_id: '3325b376-8853-4e6a-a876-0334a4e04ded',
         },
         { 
           name: 'B BAR ROPPONGI',
@@ -36,7 +40,7 @@ exports.seed = function(knex) {
           capacity_status: 'high',
           latitude: 35.659049072460775,
           longitude: 139.72875052530563,
-          owner_id: '6d237944-0e2d-4f33-8d0a-47354978dde1'
+          owner_id: '3325b376-8853-4e6a-a876-0334a4e04ded',
         },
         { 
           name: 'R',
@@ -47,7 +51,7 @@ exports.seed = function(knex) {
           capacity_status: 'med',
           latitude: 35.710922248046955,
           longitude: 139.79534482689786,
-          owner_id: '6d237944-0e2d-4f33-8d0a-47354978dde1'
+          owner_id: '3325b376-8853-4e6a-a876-0334a4e04ded',
         },
       ]);
     });

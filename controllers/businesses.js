@@ -17,7 +17,7 @@ class BusinessController {
                     .where('latitude', '>=', latSouth)
                     .where('longitude', '<=', lngEast)
                     .where('longitude', '>=', lngWest)
-                    .select('businesses.*', 'subscriptions.status');
+                    .select('businesses.*', 'subscriptions.status as sub_status');
     
                 res.send(businesses)
             } catch (err) {
@@ -28,7 +28,7 @@ class BusinessController {
             try {
                 const businesses = await db('businesses')
                     .leftJoin('subscriptions', 'subscriptions.bus_id', 'businesses.id')
-                    .select('businesses.*', 'subscriptions.status');
+                    .select('businesses.*', 'subscriptions.status as sub_status');
     
                 res.send(businesses);
             } catch (err) {
@@ -72,9 +72,9 @@ class BusinessController {
             console.log(req.params)
             console.log(req.body);
             const { id } = req.params;
-            const setStatus = req.body;
+            const changes = req.body;
             console.log(id);
-            await db('businesses').where({id: id}).update(setStatus);
+            await db('businesses').where({id: id}).update(changes);
             res.status(200).end();
         } catch (err) {
             console.log(err);
