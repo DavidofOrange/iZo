@@ -69,11 +69,8 @@ class BusinessController {
 
     async putBusiness(req, res) {
         try {
-            console.log(req.params)
-            console.log(req.body);
             const { id } = req.params;
             const changes = req.body;
-            console.log(id);
             await db('businesses').where({id: id}).update(changes);
             res.status(200).end();
         } catch (err) {
