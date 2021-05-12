@@ -29,6 +29,7 @@ class UserController {
                 .where({username: req.body.username})
                 .select(
                     'u.id AS user_id',
+                    'u.username',
                     'u.email',
                     'u.password',
                     'u.user_type',
@@ -52,8 +53,33 @@ class UserController {
             if (data) {
                 if (await bcrypt.compare(req.body.password, data[0].password) || req.body.password === 'yosh' || req.body.password === 'wiru') {
                     const accessToken = jwt.sign({pw: data[0].password}, process.env.ACCESS_TOKEN_SECRET, {expiresIn: 1200});
-                    data.forEach((dataObj) => {delete dataObj.password});
-                    const response = {data: data, accessToken, auth: true};
+                    const userObj = {
+                        userId: data[0].user_id,
+                        username: data[0].username,
+                        email: data[0].email,
+                        userType: data[0].user_type,
+                        stripeId: data[0].stripe_id,
+                    }
+                    const busArr = data.map((obj) => {
+                        return {
+                            busId: obj.bus_id,
+                            busName: obj.bus_name,
+                            postalCode: obj.postal_code,
+                            prefecture: obj.prefecture,
+                            address1: obj.address1,
+                            address2: obj.address2,
+                            capacityStatus: obj.capacity_status,
+                            lat: obj.latitude,
+                            lng: obj.longitude,
+                            slogan: obj.slogan,
+                            openHours: obj.open_hours,
+                            theme: obj.theme,
+                            specials: obj.specials,
+                            busCreatedAt: obj.bus_created_at,
+                            subStatus: obj.sub_status
+                        }
+                    })
+                    const response = {data: {user: userObj, businesses: busArr}, accessToken, auth: true};
                     // access-token cookie expiry: seconds*minutes*hours*days*miliseconds (30 days)
                     res.cookie("access-token", response.accessToken, {maxAge: 60*60*24*30*1000, httpOnly: true})
                     res.json(response);
