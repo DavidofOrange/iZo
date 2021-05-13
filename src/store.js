@@ -1,8 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import axios from "axios"
-require('dotenv').config()
-import locationsData from "./utils/default_places"
 import {gmapApi} from "vue2-google-maps"
 
 Vue.use(Vuex);
@@ -22,11 +20,12 @@ export default new Vuex.Store({
         showAddBusiness: false,
         showSubscribeView: false,
         showPaymentView: false,
+        showFeatures: false,
         businessList: [],
-        bussinessId: "",
+        currBusiness: {},
         subscription: {},
         markers: {},
-        stripePublishableKey: process.env.STRIPE_PUBLISH_KEY // How to use env vars in Vue 2?
+        // stripePublishableKey: process.env.STRIPE_PUBLISH_KEY, // How to use env vars in Vue 2?
     },
 
     mutations: {
@@ -45,6 +44,7 @@ export default new Vuex.Store({
             state.showLogin = false;
             state.showSubscribeView = false;
             state.showPaymentView = false;
+            state.showFeatures = false;
         },
 
         showAddBusiness(state) {
@@ -93,8 +93,8 @@ export default new Vuex.Store({
             state.showSubscribeView = true
         },
 
-        setBusinessId(state, busId) {
-            state.bussinessId = busId
+        setCurrBusiness(state, currBus) {
+            state.currBusiness = currBus
         },
 
         setSubscription(state, subscription) {
@@ -103,16 +103,21 @@ export default new Vuex.Store({
 
         setShowPaymentView(state) {
             state.showPaymentView = true;
+        },
+
+        setShowFeaturesView(state) {
+            state.showFeatures = true;
         }
 
     },
 
     actions: {
-        async getPlaces({ commit, state }) {
+        async getPlaces({ commit }) {
             try {
                 // const res = await axios.get(`/api/businesses/?lat=${state.centerCoords.lat}&lng=${state.centerCoords.lng}`)
+                const res = await axios.get(`/api/businesses/`)
 
-                commit("setPlaces", locationsData.data.location)
+                commit("setPlaces", res.data)
 
             } catch (err) {
                 console.error(err)
@@ -219,7 +224,7 @@ export default new Vuex.Store({
 
         },
 
-        async addBusiness( { commit, state}, newBusiness ) {
+        async addBusiness( { state, commit }, newBusiness ) {
             try {
                 // add new bussiness
                 const res = await axios.post('/api/businesses', newBusiness)
@@ -239,15 +244,27 @@ export default new Vuex.Store({
             }
         },
 
-        setBussinessId({commit}, busId) {
-            commit("setBusinessId", busId)
+        async updateBusiness({commit}, data) {
+
+            try {
+                await axios.put(`/api/business/${data.busId}`, data.data)
+                commit("setShowsToFalse")
+                commit("setShowBusinessView")
+
+            } catch (err) {
+                console.error(err)
+            }
+        },
+
+        setCurrBusiness({commit}, currBus) {
+            commit("setCurrBusiness", currBus)
         },
 
         async createSubscription({ state, commit }) {
             const res = await axios.post('/api/stripe/create-subscription', {
                 stripeId: state.user.stripeId,
                 userId: state.user.userId,
-                busId: state.bussinessId
+                busId: state.currBusiness.busId
             })
 
             const subscription = {
@@ -256,7 +273,17 @@ export default new Vuex.Store({
             }
 
             commit("setSubscription", subscription)
-        }
+        },
 
+        async subscribeBusiness({state, commit}) {
+            await axios.put(`/api/subscriptions/${state.subscription.stripeSubId}`, {status: "active"})
+            for (let business of state.businessList) {
+                if (business.busId === state.currBusiness.busId) {
+                    business.subStatus = "active"
+                }
+            }
+            commit("setShowsToFalse")
+            commit("setShowBusinessView")
+        }
     }
 })

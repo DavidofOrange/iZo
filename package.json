@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev:client": "vue-cli-service serve",
+    "dev:client2": "vue-cli-service serve --mode development",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
@@ -20,7 +21,7 @@
     "dotenv": "^9.0.2",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
-    "knex": "^0.95.4",
+    "knex": "^0.95.5",
     "nodemon": "^2.0.7",
     "pg": "^8.6.0",
     "stripe": "^8.148.0",

@@ -1,13 +1,13 @@
 <template>
-    <div>
+    <div class="payment-container">
         <label>Card Number</label>
-        <div id="card-number"></div>
+        <div id="card-number" class="card-input"></div>
         <label>Card Expiry</label>
-        <div id="card-expiry"></div>
+        <div id="card-expiry" class="card-input"></div>
         <label>Card CVC</label>
-        <div id="card-cvc"></div>
+        <div id="card-cvc" class="card-input"></div>
         <div id="card-error"></div>
-        <button id="custom-button" @click="createToken">Generate Token</button>
+        <button id="custom-button" @click="createToken">Process Payment</button>
    </div>
 </template>
 
@@ -63,27 +63,58 @@ export default {
 
     methods: {
       async createToken () {
-      const { token, error } = await this.$stripe.createToken(this.cardNumber);
-      if (error) {
-        // handle error here
-        document.getElementById('card-error').innerHTML = error.message;
-        return;
-      }
-      console.log(token);
-      // handle the token
-      // send it to your server
+        const { token, error } = await this.$stripe.createToken(this.cardNumber);
+        if (error) {
+            // handle error here
+            document.getElementById('card-error').innerHTML = error.message;
+            return;
+        }
+        
+        try {
+            const res = await this.$stripe.confirmCardPayment(this.$store.state.subscription.stripeClientSecret, {
+                payment_method: {
+                    card: this.cardNumber,
+                }
+            })
+
+            if (res.paymentIntent.status === "succeeded") {
+                console.log("Payment successful")
+                this.$store.dispatch("subscribeBusiness")
+            } else {
+                console.log("Payment failed...")
+            }
+
+        } catch (err) {
+            // handle payment error here
+            console.log("HERE", err);
+        }
     },
   }
 };
 </script>
 
 <style scoped>
+.payment-container {
+    margin-top: 30vh;
+    margin-left: 20vw;
+    margin-right: 20vw;
+    padding: 5vh;
+    border-radius: 20px;
+    border: 1px solid;
+    background-color: rgb(235, 235, 235);
+}
+
+.card-input {
+    border: 1px solid rgb(180, 180, 180);
+    margin: auto;
+}
+
 #custom-button {
-  height: 30px;
-  outline: 1px solid grey;
-  background-color: green;
-  padding: 5px;
-  color: white;
+    margin-top: 3vh;
+    height: 30px;
+    border-radius: 10px;
+    background-color: rgb(53, 125, 219);
+    color: white;
 }
 
 #card-error {

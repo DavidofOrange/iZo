@@ -25,7 +25,8 @@
                                 element: collapseCounter[index], 
                                 business: business})" id="customRange2" :ref="`capacity${collapseCounter[index]}`">
                     </div>
-                    <a href="#" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true" @click.prevent="goPremium(business.busId)">Go Premium</a>
+                    <a href="#" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true" v-show="business.subStatus !== 'active'" @click.prevent="goPremium({busId: business.busId, subStatus: business.subStatus})">Go Premium</a>
+                    <a href="#" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true" v-show="business.subStatus === 'active'" @click.prevent="updateFeatures({busId: business.busId, subStatus: business.subStatus})">Update Business</a>
                 </div>
             </div>
         </div>
@@ -87,11 +88,17 @@ export default {
             this.$store.commit("setShowsToFalse")
         },
 
-        goPremium(busId) {
-            this.$store.dispatch("setBussinessId", busId)
+        goPremium(currBus) {
+            this.$store.dispatch("setCurrBusiness", currBus)
             this.$store.commit("setShowsToFalse")
             this.$store.commit("setShowSubscribeView")
         },
+
+        updateFeatures(currBus) {
+            this.$store.dispatch("setCurrBusiness", currBus)
+            this.$store.commit("setShowsToFalse")
+            this.$store.commit("setShowFeaturesView")
+        }
     }
 
 }

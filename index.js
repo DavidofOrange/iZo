@@ -1,5 +1,5 @@
 const app = require('./routes');
-const db = require('./db/db')
+const db = require('./db/db');
 
 const PORT = process.env.PORT || 4000;
 

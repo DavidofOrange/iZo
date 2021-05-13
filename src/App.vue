@@ -1,13 +1,14 @@
 <template>
   <div id="app" class="components-container">
+    <Features v-if="this.$store.state.showFeatures && this.$store.state.user.userType === 'Business'" />
     <AddBusiness v-if="this.$store.state.showAddBusiness" />
     <BusinessView v-if="this.$store.state.showBusinessView && this.$store.state.user.userType === 'Business'" />
     <SubscribeView v-if="this.$store.state.showSubscribeView && this.$store.state.user.userType === 'Business'" />
     <PaymentView v-if="this.$store.state.showPaymentView && this.$store.state.user.userType === 'Business'" />
     <CreateAccount v-if="this.$store.state.showCreateAccount" />
     <Login v-if="this.$store.state.showLogin" />
-    <Navigation v-if="!this.$store.state.showLogin && !this.$store.state.showCreateAccount && !this.$store.state.showBusinessView && !this.$store.state.showAddBusiness && !this.$store.state.showSubscribeView && !this.$store.state.showPaymentView" />
-    <Map v-if="!this.$store.state.showLogin && !this.$store.state.showCreateAccount && !this.$store.state.showBusinessView && !this.$store.state.showAddBusiness && !this.$store.state.showSubscribeView && !this.$store.state.showPaymentView" />
+    <Navigation v-if="!this.$store.state.showLogin && !this.$store.state.showCreateAccount && !this.$store.state.showBusinessView && !this.$store.state.showAddBusiness && !this.$store.state.showSubscribeView && !this.$store.state.showPaymentView && !this.$store.state.showFeatures" />
+    <Map v-if="!this.$store.state.showLogin && !this.$store.state.showCreateAccount && !this.$store.state.showBusinessView && !this.$store.state.showAddBusiness && !this.$store.state.showSubscribeView && !this.$store.state.showPaymentView && !this.$store.state.showFeatures" />
   </div>
 </template>
 
@@ -20,7 +21,7 @@ import CreateAccount from "./components/CreateAccount"
 import AddBusiness from "./components/AddBusiness"
 import SubscribeView from "./components/SubscribeView"
 import PaymentView from "./components/PaymentView"
-// import InfoBox from "./components/InfoBox";
+import Features from "./components/Features"
 
 export default {
   name: 'App',
@@ -29,11 +30,11 @@ export default {
     Navigation,
     Login,
     CreateAccount,
-    // InfoBox,
     BusinessView,
     AddBusiness,
     SubscribeView,
-    PaymentView
+    PaymentView,
+    Features
 },
 
   beforeMount() {
@@ -48,8 +49,6 @@ export default {
 
   },
 
-  methods: {
-  }
 }
 </script>
 

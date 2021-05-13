@@ -5,7 +5,7 @@
             <span class="lead">Please Sign In</span>
         </nav>
         <div class="form-container">
-            <form class="form">
+            <form class="form-group">
                 <div class="form-group">
                     <label for="username">Username</label>
                     <input type="text" class="form-control" id="username" v-model="username" placeholder="Enter username">
@@ -57,6 +57,8 @@ export default {
 
 .login-account {
     cursor: pointer;
+    margin-top: 5%;
+    color: rgb(0, 54, 36);
 }
 
 .form-container {
