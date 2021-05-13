@@ -21,6 +21,8 @@ export default new Vuex.Store({
         showSubscribeView: false,
         showPaymentView: false,
         showFeatures: false,
+        showPaymentSuccess: false,
+        showPaymentFailed: false,
         businessList: [],
         currBusiness: {},
         subscription: {},
@@ -45,6 +47,8 @@ export default new Vuex.Store({
             state.showSubscribeView = false;
             state.showPaymentView = false;
             state.showFeatures = false;
+            state.showPaymentSuccess = false;
+            state.showPaymentFailed = false;
         },
 
         showAddBusiness(state) {
@@ -107,12 +111,20 @@ export default new Vuex.Store({
 
         setShowFeaturesView(state) {
             state.showFeatures = true;
-        }
+        },
+
+        setShowPaymentSuccess(state) {
+            state.showPaymentSuccess = true;
+        },
+
+        setShowPaymentSFailed(state) {
+            state.showPaymentFailed = true;
+        },
 
     },
 
     actions: {
-        async getPlaces({ commit }) {
+        async getPlaces({ state, commit }) {
             try {
                 // const res = await axios.get(`/api/businesses/?lat=${state.centerCoords.lat}&lng=${state.centerCoords.lng}`)
                 const res = await axios.get(`/api/businesses/`)
@@ -244,7 +256,7 @@ export default new Vuex.Store({
             }
         },
 
-        async updateCapacity({state}, data) {
+        async updateCapacity({state, dispatch}, data) {
             try {
                 await axios.put(`/api/businesses/${data.id}`, {capacity_status: data.capacity_status})
                 for (let business of state.businessList) {
@@ -252,15 +264,19 @@ export default new Vuex.Store({
                         business.capacityStatus = data.capacity_status
                     }
                 }
+
+                dispatch("getPlaces")
             } catch (err) {
                 console.error(err)
             }
         },
 
-        async updateBusiness({commit}, data) {
+        async updateBusiness({commit, dispatch}, data) {
 
             try {
                 await axios.put(`/api/businesses/${data.busId}`, data.data)
+
+                dispatch("getPlaces")
                 commit("setShowsToFalse")
                 commit("setShowBusinessView")
 
@@ -288,15 +304,16 @@ export default new Vuex.Store({
             commit("setSubscription", subscription)
         },
 
-        async subscribeBusiness({state, commit}) {
+        async subscribeBusiness({state, commit, dispatch}) {
             await axios.put(`/api/subscriptions/${state.subscription.stripeSubId}`, {status: "active"})
             for (let business of state.businessList) {
                 if (business.busId === state.currBusiness.busId) {
                     business.subStatus = "active"
                 }
             }
+            dispatch("getPlaces")
             commit("setShowsToFalse")
-            commit("setShowBusinessView")
+            commit("setShowPaymentSuccess")
         }
     }
 })

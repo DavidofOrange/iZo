@@ -7,8 +7,6 @@
         <h6 class="details" v-show="place.sub_status == 'active'">Theme: {{place.theme}}</h6>
         <h6 class="details" v-show="place.sub_status == 'active'">Specials: {{place.specials}}</h6>
         <h6 class="details" v-show="place.sub_status == 'active'">Open Hours: {{place.open_hours}}</h6>
-        <a href="#" class="card-link">Card link</a>
-        <a href="#" class="card-link">Another link</a>
     </div>
     </div>
 </template>
@@ -40,12 +38,4 @@ export default {
     cursor: pointer;
 }
 
-
-.details {
-    margin-left: -60%
-}
-
-.card-body {
-    z-index: 20;
-}
 </style>    
