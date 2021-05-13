@@ -60,6 +60,12 @@ export default {
   text-align: center;
   color: #2c3e50;
 }
+body {
+  background-color: black;
+  background-image: url("./assets/Design2.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
 
 .components-container {
   display:flex;

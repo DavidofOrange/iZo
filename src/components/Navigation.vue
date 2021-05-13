@@ -1,8 +1,8 @@
 <template>
     <div class="nav-container">
-    <nav class="navbar navbar-light bg-light">
+    <nav class="navbar">
         <div class="container-fluid">
-            <a class="navbar-brand">iZO</a>
+            <a class="navbar-brand"></a>
             <form class="d-flex">
                 <div class="nav-item" v-if="!this.$store.state.loggedIn" @click="login">Sign In</div>
                 <div class="nav-item" v-if="this.$store.state.loggedIn" @click="settings">{{this.$store.state.user.username}}</div>
@@ -65,16 +65,33 @@ export default {
 
 <style>
 
+.d-flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
 .hidden-map {
     visibility: hidden;
 }
-
 .nav-container {
-    margin-bottom: 1%;
+    padding-bottom: 2px;
+    color: white;
 }
-
+.form-control {
+    height: 40px;
+}
+.btn {
+    color: white;
+    border: 1px solid red;
+}
 .navbar-brand, .nav-item{
     cursor: pointer;
+    height: 40px;
+}
+.container-fluid {
+    padding-right: 5px;
+    padding-left: 5px;
 }
 
 </style>

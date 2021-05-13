@@ -1,6 +1,6 @@
 <template lang="">
     <div>
-        <nav class="navbar navbar-light bg-light">
+        <nav class="navbar navbar-light">
             <span class="navbar-brand mb-0 h1" @click.prevent="goHome">IZAKA-YA' OPEN</span>
             <span class="navbar-brand mb-0 h1">Business Account</span>
         </nav>

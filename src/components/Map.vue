@@ -85,6 +85,7 @@ export default {
 .gmap-default {
     width: 100%;
     height: 88vh;
+    outline: none;
 }
 
 .map-container {

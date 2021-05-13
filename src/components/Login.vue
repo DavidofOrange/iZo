@@ -1,6 +1,6 @@
 <template>
     <div>
-        <nav class="navbar navbar-light bg-light">
+        <nav class="navbar navbar-light">
             <span class="navbar-brand mb-0 h1 light" @click.prevent="goHome">IZAKA-YA' OPEN</span>
             <span class="lead">Please Sign In</span>
         </nav>
@@ -17,7 +17,7 @@
                 <button type="submit" class="btn btn-primary" @click.prevent="login">Login</button>
                 <div class="login-account" @click.prevent="createAccount">Create Account</div>
             </form>
-        </div>          
+        </div>              
     </div>
 </template>
 
