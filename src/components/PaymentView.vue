@@ -91,6 +91,7 @@ export default {
                 this.$store.dispatch("subscribeBusiness")
             } else {
                 console.log("Payment failed...")
+                this.$store.commit("setShowPaymentFailed")
             }
 
         } catch (err) {

@@ -5,10 +5,12 @@
     <BusinessView v-if="this.$store.state.showBusinessView && this.$store.state.user.userType === 'Business'" />
     <SubscribeView v-if="this.$store.state.showSubscribeView && this.$store.state.user.userType === 'Business'" />
     <PaymentView v-if="this.$store.state.showPaymentView && this.$store.state.user.userType === 'Business'" />
+    <PaymentSuccess v-if="this.$store.state.showPaymentSuccess && this.$store.state.user.userType === 'Business'" />
+    <PaymentFailed v-if="this.$store.state.showPaymentFailed && this.$store.state.user.userType === 'Business'" />
     <CreateAccount v-if="this.$store.state.showCreateAccount" />
     <Login v-if="this.$store.state.showLogin" />
-    <Navigation v-if="!this.$store.state.showLogin && !this.$store.state.showCreateAccount && !this.$store.state.showBusinessView && !this.$store.state.showAddBusiness && !this.$store.state.showSubscribeView && !this.$store.state.showPaymentView && !this.$store.state.showFeatures" />
-    <Map v-if="!this.$store.state.showLogin && !this.$store.state.showCreateAccount && !this.$store.state.showBusinessView && !this.$store.state.showAddBusiness && !this.$store.state.showSubscribeView && !this.$store.state.showPaymentView && !this.$store.state.showFeatures" />
+    <Navigation v-if="!this.$store.state.showLogin && !this.$store.state.showCreateAccount && !this.$store.state.showBusinessView && !this.$store.state.showAddBusiness && !this.$store.state.showSubscribeView && !this.$store.state.showPaymentView && !this.$store.state.showFeatures && !this.$store.state.showPaymentSuccess && !this.$store.state.showPaymentFailed" />
+    <Map v-if="!this.$store.state.showLogin && !this.$store.state.showCreateAccount && !this.$store.state.showBusinessView && !this.$store.state.showAddBusiness && !this.$store.state.showSubscribeView && !this.$store.state.showPaymentView && !this.$store.state.showFeatures && !this.$store.state.showPaymentSuccess && !this.$store.state.showPaymentFailed" />
   </div>
 </template>
 
@@ -21,6 +23,8 @@ import CreateAccount from "./components/CreateAccount"
 import AddBusiness from "./components/AddBusiness"
 import SubscribeView from "./components/SubscribeView"
 import PaymentView from "./components/PaymentView"
+import PaymentSuccess from "./components/PaymentSuccess"
+import PaymentFailed from "./components/PaymentFailed"
 import Features from "./components/Features"
 
 export default {
@@ -34,6 +38,8 @@ export default {
     AddBusiness,
     SubscribeView,
     PaymentView,
+    PaymentSuccess,
+    PaymentFailed,
     Features
 },
 
