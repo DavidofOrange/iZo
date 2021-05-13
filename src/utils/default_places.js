@@ -1,4 +1,4 @@
-const locationsData =     {
+const locationsData =  {
     data: {
         location: [
             {

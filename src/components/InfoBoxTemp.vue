@@ -2,11 +2,11 @@
     <div class="card" style="width: 18rem;">
     <div class="card-body">
         <h3 class="card-title">{{place.name}}</h3>
-        <h4 class="card-subtitle mb-2 text-muted">{{capacity}}</h4>
-        <h6 class="details" v-show="place.subStatus == 'active'">Slogan: {{place.slogan}}</h6>
-        <h6 class="details" v-show="place.subStatus == 'active'">Theme: {{place.theme}}</h6>
-        <h6 class="details" v-show="place.subStatus == 'active'">Specials: {{place.specials}}</h6>
-        <h6 class="details" v-show="place.subStatus == 'active'">Open Hours: {{place.openHours}}</h6>
+        <h4 class="card-subtitle mb-2 text-muted">{{this.capacityStatusMap[place.capacity_status]}}</h4>
+        <h6 class="details" v-show="place.sub_status == 'active'">Slogan: {{place.slogan}}</h6>
+        <h6 class="details" v-show="place.sub_status == 'active'">Theme: {{place.theme}}</h6>
+        <h6 class="details" v-show="place.sub_status == 'active'">Specials: {{place.specials}}</h6>
+        <h6 class="details" v-show="place.sub_status == 'active'">Open Hours: {{place.open_hours}}</h6>
         <a href="#" class="card-link">Card link</a>
         <a href="#" class="card-link">Another link</a>
     </div>
@@ -21,36 +21,15 @@ export default {
     },
     data() {
         return {
-            capacity: "",            
+            capacityStatusMap: {
+                0: "Plenty of space",
+                1: "Seats Available",
+                2: "Very Busy",
+                3: "Closed"
+            }            
         }
 
     },
-
-    beforeMount() {
-        this.seatStatusParser()
-
-
-    },   
-
-    methods: {
-        seatStatusParser() {
-            switch(this.place.capacity) {
-                case 0:
-                    this.capacity = "Plenty of"
-                    break;
-                case 1: 
-                    this.capacity = "Seats Available"
-                    break;
-                case 2: 
-                    this.capacity = "Very Busy"
-                    break;
-                case 3:
-                    this.capacity = "Closed"
-                    break;
-            }
-
-        },
-    }
 
 }
 </script>

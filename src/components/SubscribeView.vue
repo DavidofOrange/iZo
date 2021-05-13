@@ -35,7 +35,7 @@ export default {
             this.$store.dispatch("createSubscription")
             this.$store.commit("setShowsToFalse")
             this.$store.commit("setShowPaymentView")
-        }
+        },
     }
 }
 </script>
