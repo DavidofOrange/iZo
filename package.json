@@ -25,6 +25,7 @@
     "pg": "^8.6.0",
     "stripe": "^8.148.0",
     "vue": "^2.6.11",
+    "vue2-gmap-custom-marker": "^6.0.1",
     "vue2-google-maps": "^0.10.7",
     "vuex": "^3.6.2"
   },

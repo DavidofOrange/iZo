@@ -2,7 +2,7 @@ import Vue from "vue";
 import Vuex from "vuex";
 import axios from "axios"
 require('dotenv').config()
-// import locationsData from "./utils/default_places"
+import locationsData from "./utils/default_places"
 import {gmapApi} from "vue2-google-maps"
 
 Vue.use(Vuex);
@@ -25,10 +25,18 @@ export default new Vuex.Store({
         businessList: [],
         bussinessId: "",
         subscription: {},
+        markers: {},
         stripePublishableKey: process.env.STRIPE_PUBLISH_KEY // How to use env vars in Vue 2?
     },
 
     mutations: {
+        resetMarkers(state, name) {
+            state.markers[name] = false
+        },
+
+        setMarkers(state, markers) {
+            state.markers = markers
+        },
 
         setShowsToFalse(state) {
             state.showBusinessView = false;
@@ -102,8 +110,9 @@ export default new Vuex.Store({
     actions: {
         async getPlaces({ commit, state }) {
             try {
-                const res = await axios.get(`/api/businesses/?lat=${state.centerCoords.lat}&lng=${state.centerCoords.lng}`)
-                commit("setPlaces", res.data)
+                // const res = await axios.get(`/api/businesses/?lat=${state.centerCoords.lat}&lng=${state.centerCoords.lng}`)
+
+                commit("setPlaces", locationsData.data.location)
 
             } catch (err) {
                 console.error(err)
@@ -155,13 +164,13 @@ export default new Vuex.Store({
                         // capacityStatus: 3
                         // lat: 35.65905
                         // lng: 139.72874
-                        // openHours: null
+                        // openHours: null STRING
                         // postalCode: "106-0032"
                         // prefecture: "東京都"
-                        // slogan: null
-                        // specials: null
-                        // subStatus: null
-                        // theme: null
+                        // slogan: null STRING
+                        // specials: null STRING
+                        // subStatus: "active" or "expired" or "" // if active, show slogan, theme, specials, and openHours
+                        // theme: null STRING
                     // },
                 // ]
                 if (user.userType === "Business") {
