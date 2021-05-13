@@ -10,8 +10,12 @@ if (process.env.DATABASE_URL) {
 module.exports = {
 
   development: {
-    client: 'pg',
+    client: 'postgresql',
     connection: pgParsed || process.env.DATABASE_LOCAL_URL,
+    pool: {
+      min: 2,
+      max: 10
+    },
     migrations: {
       directory: `${__dirname}/migrations/`,
       tableName: "knex_migrations"

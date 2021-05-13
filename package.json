@@ -8,7 +8,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "start": "node index.js",
+    "start": "node -r dotenv/config index.js",
     "dev:server": "nodemon -r dotenv/config",
     "migrate": "node -r dotenv/config ./node_modules/knex/bin/cli.js migrate:latest --knexfile db/knexfile.js",
     "rollback": "node -r dotenv/config ./node_modules/knex/bin/cli.js migrate:rollback --knexfile db/knexfile.js"
