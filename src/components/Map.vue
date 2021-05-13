@@ -13,6 +13,14 @@
             :marker="{lat: place.latitude, lng: place.longitude}"
             @click.native="renderInfoBox(place.name)"
         >
+        
+        <InfoBoxTemp
+            class="info-box"
+            v-show="markers[place.name]"
+            :place="place"
+            @click="renderInfoBox(place.name)"
+         />
+         
         <img v-show="place.capacity_status == 0 && place.sub_status !== 'active'" src="../assets/open.png" />
         <img v-show="place.capacity_status == 1 && place.sub_status !== 'active'" src="../assets/seats_available.png" />
         <img v-show="place.capacity_status == 2 && place.sub_status !== 'active'" src="../assets/full.png" />
@@ -21,13 +29,6 @@
         <img v-show="place.capacity_status == 1 && place.sub_status === 'active'" src="../assets/seats_available.png" />
         <img v-show="place.capacity_status == 2 && place.sub_status === 'active'" src="../assets/full.png" />
         <img v-show="place.capacity_status == 3 && place.sub_status === 'active'" src="../assets/closed.png" />  
-        
-        <InfoBoxTemp
-            class="info-box"
-            v-show="markers[place.name]"
-            :place="place"
-            @click="renderInfoBox(place.name)"
-         />
         </GmapCustomMarker>
 
     </GmapMap>        
