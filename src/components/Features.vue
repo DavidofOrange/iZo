@@ -4,6 +4,7 @@
             <span class="navbar-brand mb-0 h1" @click.prevent="goHome">IZAKA-YA' OPEN</span>
             <span class="navbar-brand mb-0 h1">Add Business</span>
         </nav>
+        <div>Update {{this.$store.state.currBusiness.busName}}</div>
         <div class="form-container">
             <form class="form">
                 <div class="form-group">
@@ -22,34 +23,34 @@
                     <label class="time-label" for="opening-time">Open: </label>
                     <select class="form-control" id="opening-time" v-model="openTime" placeholder="Hello">
                         <option value="" selected disabled>open</option>
-                        <option>1am</option><option>2am</option>
-                        <option>3am</option><option>4am</option>
-                        <option>5am</option><option>6am</option>
-                        <option>7am</option><option>8am</option>
-                        <option>9am</option><option>10am</option>
-                        <option>11am</option><option>12pm</option>
-                        <option>1pm</option><option>2pm</option>
-                        <option>3pm</option><option>4pm</option>
-                        <option>5pm</option><option>6pm</option>
-                        <option>7pm</option><option>8pm</option>
-                        <option>9pm</option><option>10pm</option>
-                        <option>11pm</option><option>midnight</option>
+                        <option>1:00am</option><option>2:00am</option>
+                        <option>3:00am</option><option>4:00am</option>
+                        <option>5:00am</option><option>6:00am</option>
+                        <option>7:00am</option><option>8:00am</option>
+                        <option>9:00am</option><option>10:00am</option>
+                        <option>11:00am</option><option>12:00pm</option>
+                        <option>1:00pm</option><option>2:00pm</option>
+                        <option>3:00pm</option><option>4:00pm</option>
+                        <option>5:00pm</option><option>6:00pm</option>
+                        <option>7:00pm</option><option>8:00pm</option>
+                        <option>9:00pm</option><option>10:00pm</option>
+                        <option>11:00pm</option><option>midnight</option>
                     </select>
                     <label class="time-label" for="closing-time">Close: </label>
                     <select class="form-control" id="closing-time" v-model="closeTime">
                         <option value="" selected disabled>close</option>
-                        <option>1am</option><option>2am</option>
-                        <option>3am</option><option>4am</option>
-                        <option>5am</option><option>6am</option>
-                        <option>7am</option><option>8am</option>
-                        <option>9am</option><option>10am</option>
-                        <option>11am</option><option>12pm</option>
-                        <option>1pm</option><option>2pm</option>
-                        <option>3pm</option><option>4pm</option>
-                        <option>5pm</option><option>6pm</option>
-                        <option>7pm</option><option>8pm</option>
-                        <option>9pm</option><option>10pm</option>
-                        <option>11pm</option><option>midnight</option>
+                        <option>1:00am</option><option>2:00am</option>
+                        <option>3:00am</option><option>4:00am</option>
+                        <option>5:00am</option><option>6:00am</option>
+                        <option>7:00am</option><option>8:00am</option>
+                        <option>9:00am</option><option>10:00am</option>
+                        <option>11:00am</option><option>12:00pm</option>
+                        <option>1:00pm</option><option>2:00pm</option>
+                        <option>3:00pm</option><option>4:00pm</option>
+                        <option>5:00pm</option><option>6:00pm</option>
+                        <option>7:00pm</option><option>8:00pm</option>
+                        <option>9:00pm</option><option>10:00pm</option>
+                        <option>11:00pm</option><option>midnight</option>
                     </select>
                 </div>
                 <button type="submit" class="btn btn-primary" @click.prevent="updateFeatures">Update</button>
@@ -84,9 +85,10 @@ export default {
             } else {
 
                 let openHours;
-                if (this.openTime !== "" || this.closeTime !== "") {
-                    openHours = `Open from ${this.openTime} until ${this.closeTime}`
+                if (this.openTime !== "" && this.closeTime !== "") {
+                    openHours = `${this.openTime} - ${this.closeTime}`
                 }
+
 
                 const tempData = {
                     slogan: this.slogan,
@@ -97,7 +99,7 @@ export default {
 
                 let changes = {};
                 for (let key in tempData) {
-                    if (tempData[key] !== "") {
+                    if (tempData[key] !== "" && tempData[key] !== undefined) {
                         changes[key] = tempData[key]
                     }
                 }
@@ -106,14 +108,17 @@ export default {
                     busId: this.$store.state.currBusiness.busId,
                     data: changes
                 }
-                console.log(data)
-                // this.$store.dispatch("updateBusiness", data)
-                // this.$store.dispatch("getPlaces")
+                if (changes && Object.keys(changes).length === 0 && changes.constructor === Object) {
+                    alert("Please enter valid inputs (did you set both a opening and closing time?)")
+                } else {
+                    this.$store.dispatch("updateBusiness", data)
+                    this.$store.dispatch("getPlaces")
+                }
             }
         },
 
         inputValidator() {
-            if (this.slogan === "" && this.theme === "" && this.specials === "" && this.openHours === "") {
+            if (this.slogan === "" && this.theme === "" && this.specials === "" && this.openTime === "" && this.closeTime === "") {
                 return false
             } else {
                 return true

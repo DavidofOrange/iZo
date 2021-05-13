@@ -4,7 +4,7 @@
             <span class="navbar-brand mb-0 h1" @click.prevent="goHome">IZAKA-YA' OPEN</span>
             <span class="navbar-brand mb-0 h1">Business Account</span>
         </nav>
-        <div>Business</div>
+        <div>Businesses</div>
         <div class="accordion" id="accordionExample">
             <div class="card" @click="showCard(index)" v-for="(business, index) in this.$store.state.businessList" :key="index">
                 <div class="card-header" :id="`heading${collapseCounter[index]}`">
@@ -14,25 +14,23 @@
                     </button>
                     </h2>
                 </div>
-                <div :id="`collapse${collapseCounter[index]}`" :class="[clickedCard === index ? 'collapse show' : 'collapse']" :aria-labelledby="`heading${collapseCounter[index]}`" data-parent="#accordionExample">
+                <div :id="`collapse${collapseCounter[index]}`" class="collapse-div" :class="[clickedCard === index ? 'collapse show' : 'collapse']" :aria-labelledby="`heading${collapseCounter[index]}`" data-parent="#accordionExample">
                     <div class="card-body">
                         <label for="customRange2" class="form-label">Current Capacity</label>
                         <div class="capacity-title">
-                        <div>Open</div><div>Some Seats</div><div>Full</div><div>Closed</div>
+                        <div>Free</div><div>Moderate</div><div>Busy</div><div>Closed</div>
                         </div>
                         <input type="range" class="form-range" min="0" max="3" :value="business.capacityStatus" 
-                            @change.prevent="showSaveNewCapacityToggle({
+                            @change.prevent="updateCapacity({
                                 element: collapseCounter[index], 
-                                business: business})" id="customRange2" :ref="`capacity${collapseCounter[index]}`">
+                                busId: business.busId})" id="customRange2" :ref="`capacity${collapseCounter[index]}`">
                     </div>
-                    <a href="#" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true" v-show="business.subStatus !== 'active'" @click.prevent="goPremium({busId: business.busId, subStatus: business.subStatus})">Go Premium</a>
-                    <a href="#" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true" v-show="business.subStatus === 'active'" @click.prevent="updateFeatures({busId: business.busId, subStatus: business.subStatus})">Update Business</a>
+                    <a href="#" class=" btn-secondary btn-lg active go-prem-btn" role="button" aria-pressed="true" v-show="business.subStatus !== 'active'" @click.prevent="goPremium({busId: business.busId, busName: business.busName, subStatus: business.subStatus})">Go Premium</a>
+                    <a href="#" class="btn btn-lg active bus-info-btn" role="button" aria-pressed="true" v-show="business.subStatus === 'active'" @click.prevent="updateFeatures({busId: business.busId, busName: business.busName, subStatus: business.subStatus})">Update Business Info</a>
                 </div>
             </div>
         </div>
         <a href="#" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true" @click.prevent="addBusiness">Add Business</a>
-        <a href="#" v-show="showSaveNewCapacity" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true" @click.prevent="saveNewCapacity">Save Changes</a>
-        <a href="#" v-show="showSaveNewCapacity" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true" @click.prevent="cancelCapacityChanges">Cancel</a>
 
     </div>
 </template>
@@ -44,35 +42,21 @@ export default {
         return {
             collapseCounter: ["One", "Two", "Three", "Four", "Five", "Six", "Seven"],
             clickedCard: 0,
-            showSaveNewCapacity: false,
-            changedBusinessCapacity: {}
         }
     },
 
     methods: {
-        cancelCapacityChanges() {
-            this.showSaveNewCapacity = false
 
-        },
-
-        showSaveNewCapacityToggle(businessObject) {
+        updateCapacity(businessObject) {
             const className = `capacity${businessObject.element}`
-            const capacityNumber = this.$refs[className][0].value
+            const capacityNumber = parseInt(this.$refs[className][0].value)
 
             const data = {
-                name: businessObject.business.name,
-                capacity: capacityNumber
+                id: businessObject.busId,
+                capacity_status: capacityNumber
             }
 
-            this.changedBusinessCapacity = data
-
-            this.showSaveNewCapacity = true            
-            
-        },
-
-        saveNewCapacity() {
-            console.log(this.changedBusinessCapacity)
-            //this.$store.commit("updateCapacity", this.changedBusinessCapacity)
+            this.$store.dispatch("updateCapacity", data)
         },
 
         showCard(clickedCard) {
@@ -115,10 +99,31 @@ export default {
     margin-top: 2%;
 }
 
+.bus-info-btn {
+    height:fit-content;
+    font-size:16px;
+    padding: 1vh;
+    padding-top: 0.1vh;
+    padding-bottom: 0.1vh;
+    color: rgb(255, 255, 255);
+    background-color: rgb(70, 146, 123);
+    border-style: solid;
+    border-color: rgb(68, 68, 68);
+}
+
 .accordion {
     margin-left: auto;
     margin-right: auto;
-    width: 50%
+    width: 50vw
 }
+
+@media screen and (max-width: 480px) {
+    .accordion {
+        width: 95vw;
+    }
+
+}
+
+
 
 </style>

@@ -71,6 +71,7 @@ class BusinessController {
         try {
             const { id } = req.params;
             const changes = req.body;
+
             await db('businesses').where({id: id}).update(changes);
             res.status(200).end();
         } catch (err) {
