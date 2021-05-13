@@ -244,10 +244,23 @@ export default new Vuex.Store({
             }
         },
 
+        async updateCapacity({state}, data) {
+            try {
+                await axios.put(`/api/businesses/${data.id}`, {capacity_status: data.capacity_status})
+                for (let business of state.businessList) {
+                    if (business.busId === data.id) {
+                        business.capacityStatus = data.capacity_status
+                    }
+                }
+            } catch (err) {
+                console.error(err)
+            }
+        },
+
         async updateBusiness({commit}, data) {
 
             try {
-                await axios.put(`/api/business/${data.busId}`, data.data)
+                await axios.put(`/api/businesses/${data.busId}`, data.data)
                 commit("setShowsToFalse")
                 commit("setShowBusinessView")
 

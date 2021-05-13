@@ -1,14 +1,23 @@
 <template>
-    <div class="payment-container">
-        <label>Card Number</label>
-        <div id="card-number" class="card-input"></div>
-        <label>Card Expiry</label>
-        <div id="card-expiry" class="card-input"></div>
-        <label>Card CVC</label>
-        <div id="card-cvc" class="card-input"></div>
-        <div id="card-error"></div>
-        <button id="custom-button" @click="createToken">Process Payment</button>
-   </div>
+    <div>
+        <nav class="navbar navbar-light bg-light">
+            <span class="navbar-brand mb-0 h1" @click.prevent="goHome">IZAKA-YA' OPEN</span>
+            <span class="navbar-brand mb-0 h1">Business Account</span>
+        </nav>
+        <div class="hero-unit">
+        <h1>iZO Premium Membership</h1><br/>
+        </div>
+        <div class="payment-container">
+            <label>Card Number</label>
+            <div id="card-number" class="card-input"></div>
+            <label>Card Expiry</label>
+            <div id="card-expiry" class="card-input"></div>
+            <label>Card CVC</label>
+            <div id="card-cvc" class="card-input"></div>
+            <div id="card-error"></div>
+            <button id="custom-button" @click="createToken">Process Payment</button>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -89,13 +98,17 @@ export default {
             console.log("HERE", err);
         }
     },
+
+    goHome() {
+            this.$store.commit("setShowsToFalse")
+        },
   }
 };
 </script>
 
 <style scoped>
 .payment-container {
-    margin-top: 30vh;
+    margin-top: 15vh;
     margin-left: 20vw;
     margin-right: 20vw;
     padding: 5vh;
