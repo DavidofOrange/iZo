@@ -45,11 +45,14 @@ export default {
 .gmap-default {
     width: 100%;
     height: 88vh;
+    outline: none;
 }
 
 .map-container {
     display: flex;
+    outline: none;
 }
+
 /* .info-box {
         width: 50px;
         height: 60px;

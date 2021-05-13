@@ -5,7 +5,7 @@ exports.seed = function(knex) {
     .then(function () {
       // Inserts seed entries
       return knex('businesses').insert([
-        { 
+        {
           name: 'BAR WOODY',
           postal_code: '180-0004',
           prefecture: '東京都',
@@ -20,7 +20,7 @@ exports.seed = function(knex) {
           theme: 'Classy',
           specials: 'Free vodka before 7pm'
         },
-        { 
+        {
           name: 'EDY’S Bar',
           postal_code: '160-0021',
           prefecture: '東京都',
