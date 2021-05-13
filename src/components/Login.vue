@@ -7,8 +7,8 @@
         <div class="form-container">
             <form class="form">
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" v-model="email" aria-describedby="emailHelp" placeholder="Enter email">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" id="username" v-model="username" placeholder="Enter username">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Password</label>
@@ -26,7 +26,7 @@ export default {
     name: "Login",
     methods: {
         login() {
-            this.$store.dispatch("verifyLogin", {username: this.email, password:this.password })
+            this.$store.dispatch("verifyLogin", {username: this.username, password:this.password })
         },
 
         createAccount() {
@@ -41,7 +41,7 @@ export default {
 
     data() {
         return {
-            email: "",
+            username: "",
             password: "",
         }
     }

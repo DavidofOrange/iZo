@@ -214,6 +214,11 @@ export default new Vuex.Store({
             try {
                 // add new bussiness
                 const res = await axios.post('/api/businesses', newBusiness)
+
+
+                // API call updates businessList ??
+
+
                 // ensure to capture postgreSQL businessId and,
                 // include it in the newBusiness obj before pushing to state
                 newBusiness.busId = res.data.id
