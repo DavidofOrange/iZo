@@ -1,6 +1,6 @@
 <template>
     <div>
-        <nav class="navbar navbar-light bg-light">
+        <nav class="navbar navbar-light">
             <span class="navbar-brand mb-0 h1" @click.prevent="goHome">IZAKA-YA' OPEN</span>
             <span class="navbar-brand mb-0 h1">Create Account</span>
         </nav>
@@ -18,6 +18,7 @@
                 <div class="form-group">
                     <label for="exampleFormControlSelect1">Type of Account</label>
                     <select class="form-control" id="exampleFormControlSelect1" v-model="accountType">
+                        <option value="" selected disabled>Personal / Business</option>
                         <option>Personal</option>
                         <option>Business</option>
                     </select>
@@ -104,10 +105,14 @@ export default {
     display: flex;
 }
 
-.form {
+.form-group {
     margin: auto;
-    margin-top: 15%;
+    margin-top: 5%;
 
+}
+
+.form-control {
+    color: rgb(102, 102, 102);
 }
 
 .navbar-brand.mb-0.h1 {

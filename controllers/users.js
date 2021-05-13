@@ -13,7 +13,7 @@ class UserController {
                 password: hashed,
                 user_type: req.body.userType
             };
-            const createdUser = await db('users').insert(user).returning(['id', 'email']);
+            const [createdUser] = await db('users').insert(user).returning(['id', 'email']);
             res.status(201).send(createdUser);
         } catch (err) {
             console.error(err);

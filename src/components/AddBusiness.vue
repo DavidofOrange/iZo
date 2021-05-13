@@ -1,6 +1,6 @@
 <template>
     <div>
-        <nav class="navbar navbar-light bg-light">
+        <nav class="navbar navbar-light">
             <span class="navbar-brand mb-0 h1" @click.prevent="goHome">IZAKA-YA' OPEN</span>
             <span class="navbar-brand mb-0 h1">Add Business</span>
         </nav>
@@ -67,23 +67,19 @@ export default {
 
         addBusiness() {
             const validator = this.inputValidator()
-
             if (!validator) {
                 alert("Please fill in everything")
             } else {
                 const data = {
-                    name: this.storeName,
-                    capacity: "full",
-                    address: {
-                        addressOne: this.addressOne,
-                        addressTwo: this.addressTwo,                
-                        postcode: this.postcode,
-                        prefecture: this.prefecture,
-                    },
-                    coords: {
-                        lat: this.lat,
-                        lng: this.lng
-                    }
+                    busName: this.storeName,
+                    postalCode: this.postcode,
+                    prefecture: this.prefecture,
+                    address1: this.addressOne,
+                    address2: this.addressTwo,
+                    capacityStatus: 3,
+                    lat: this.lat,
+                    lng: this.lng,
+                    ownerId: this.$store.state.user.userId
                 }
                 this.$store.dispatch("addBusiness", data)
             }

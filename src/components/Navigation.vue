@@ -39,7 +39,7 @@ export default {
 
     methods: {
         settings() {
-            if (this.$store.state.user.type === "business") {
+            if (this.$store.state.user.userType === "Business") {
                 this.$store.commit("setShowsToFalse")
                 this.$store.commit("setShowBusinessView")
             } else {
@@ -65,22 +65,25 @@ export default {
 
 <style>
 
+.d-flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
 .hidden-map {
     visibility: hidden;
 }
 .nav-container {
-    padding-bottom: 5px;
-    background-image: url("./assets/Design2");
-    background-repeat: no-repeat;
-    background-size: cover;
+    padding-bottom: 2px;
     color: white;
-
+}
+.form-control {
+    height: 40px;
 }
 .btn {
     color: white;
-    border: 1px solid;
-    border-image-slice: 1;
-    border-image-source: linear-gradient(to left, #ff0000, #fff5f5);
+    border: 1px solid red;
 }
 .navbar-brand, .nav-item{
     cursor: pointer;
@@ -89,7 +92,6 @@ export default {
 .container-fluid {
     padding-right: 5px;
     padding-left: 5px;
-    padding-bottom: 3px;
 }
 
 </style>

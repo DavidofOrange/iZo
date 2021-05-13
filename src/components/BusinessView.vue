@@ -1,6 +1,6 @@
 <template>
     <div>
-        <nav class="navbar navbar-light bg-light">
+        <nav class="navbar navbar-light">
             <span class="navbar-brand mb-0 h1" @click.prevent="goHome">IZAKA-YA' OPEN</span>
             <span class="navbar-brand mb-0 h1">Business Account</span>
         </nav>
@@ -10,7 +10,7 @@
                 <div class="card-header" :id="`heading${collapseCounter[index]}`">
                     <h2 class="mb-0">
                     <button class="btn btn-link" type="button" data-toggle="collapse" :data-target="`#collapse${collapseCounter[index]}`" aria-expanded="true" :aria-controls="`collapse${collapseCounter[index]}`">
-                        {{business.name}}
+                        {{business.busName}}
                     </button>
                     </h2>
                 </div>
@@ -20,11 +20,13 @@
                         <div class="capacity-title">
                         <div>Open</div><div>Some Seats</div><div>Full</div><div>Closed</div>
                         </div>
-                        <input type="range" class="form-range" min="0" max="3" :value="business.capacity" 
+                        <input type="range" class="form-range" min="0" max="3" :value="business.capacityStatus" 
                             @change.prevent="showSaveNewCapacityToggle({
                                 element: collapseCounter[index], 
                                 business: business})" id="customRange2" :ref="`capacity${collapseCounter[index]}`">
                     </div>
+                    <a href="#" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true" v-show="business.subStatus !== 'active'" @click.prevent="goPremium({busId: business.busId, subStatus: business.subStatus})">Go Premium</a>
+                    <a href="#" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true" v-show="business.subStatus === 'active'" @click.prevent="updateFeatures({busId: business.busId, subStatus: business.subStatus})">Update Business</a>
                 </div>
             </div>
         </div>
@@ -84,6 +86,18 @@ export default {
 
         goHome() {
             this.$store.commit("setShowsToFalse")
+        },
+
+        goPremium(currBus) {
+            this.$store.dispatch("setCurrBusiness", currBus)
+            this.$store.commit("setShowsToFalse")
+            this.$store.commit("setShowSubscribeView")
+        },
+
+        updateFeatures(currBus) {
+            this.$store.dispatch("setCurrBusiness", currBus)
+            this.$store.commit("setShowsToFalse")
+            this.$store.commit("setShowFeaturesView")
         }
     }
 
