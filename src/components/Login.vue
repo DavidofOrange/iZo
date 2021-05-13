@@ -26,7 +26,7 @@ export default {
     name: "Login",
     methods: {
         login() {
-            this.$store.dispatch("verifyLogin", {email: this.email, password:this.password })
+            this.$store.dispatch("verifyLogin", {username: this.email, password:this.password })
         },
 
         createAccount() {
