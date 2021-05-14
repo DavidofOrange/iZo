@@ -1,7 +1,7 @@
 <template>
     <div>
         <nav class="navbar">
-            <span class="navbar-brand mb-0 h1" @click.prevent="goHome"></span>
+            <div class="empty-div" @click="goHome">222222222</div>
             <span class="navbar-brand h1">Business Account</span>
         </nav>
         <div id="biz">Businesses</div>
@@ -98,9 +98,7 @@ a {
     text-decoration: none;
 }
 .go-prem-btn {
-    background-color: rgb(197, 151, 0);
-    height: 30px;
-    width: 500px;
+    background-color: rgb(255, 255, 255);
 }
 .form-group {}
 .bus-btn {

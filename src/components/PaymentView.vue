@@ -1,8 +1,7 @@
 <template>
     <div>
         <nav class="navbar">
-            <span class="navbar-brand h1" @click.prevent="goHome"></span>
-            <span class="navbar-brand h1">Business Account</span>
+            <div class="empty-div">222222222</div>
         </nav>
         <div class="hero-unit">
         <h1>iZO Premium Membership</h1><br/>
@@ -96,7 +95,7 @@ export default {
 
         } catch (err) {
             // handle payment error here
-            console.log("HERE", err);
+            console.log(err);
         }
     },
 
@@ -119,8 +118,12 @@ export default {
     background-color: rgb(235, 235, 235);
 }
 
+label {
+    color: black;
+}
+
 .card-input {
-    border: 1px solid rgb(180, 180, 180);
+    border: 1px solid rgb(124, 124, 124);
     margin: auto;
     height: 30px;
     font-size: 2rem;
@@ -132,7 +135,7 @@ export default {
     height: 30px;
     border-radius: 10px;
     background-color: tomato;
-    color: white;
+    color: rgb(255, 255, 255);
 }
 
 #card-error {

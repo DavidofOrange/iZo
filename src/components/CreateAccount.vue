@@ -1,7 +1,7 @@
 <template>
     <div>
         <nav class="navbar">
-            <span class="navbar-brand h1" @click.prevent="goHome"></span>
+            <div class="empty-div" @click="goHome">222222222</div>
             <span class="navbar-brand h1">Create Account</span>
         </nav>
         <div class="form-container">
@@ -56,8 +56,6 @@ export default {
 
         createAccount() {
             const validator = this.inputValidator()
-
-            console.log(validator)
 
             if (validator === "pass") {
                 alert("Passwords do not match!")

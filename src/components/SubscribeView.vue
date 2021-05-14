@@ -1,7 +1,7 @@
 <template lang="">
     <div>
         <nav class="navbar">
-            <span class="navbar-brand h1" @click.prevent="goHome"></span>
+            <div class="empty-div">222222222</div>
             <span class="navbar-brand h1">Business Account</span>
         </nav>
         <div class="hero-unit">

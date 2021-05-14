@@ -1,7 +1,7 @@
 <template>
     <div>
         <nav class="navbar">
-            <span class="navbar-brand mb-0 h1 light" @click.prevent="goHome"></span>
+            <div class="empty-div" @click="goHome">222222222</div>
         </nav>
         <div class="form-container">
             <form class="form-group">

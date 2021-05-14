@@ -2,10 +2,10 @@
     <div class="nav-container">
     <nav class="navbar">
         <div class="container-fluid">
-            <a class="navbar-brand"></a>
+            <div class="empty-div">222222222</div>
             <form class="d-flex">
                 <div class="nav-item" v-if="!this.$store.state.loggedIn" @click="login">Sign In</div>
-                <div class="nav-item" v-if="this.$store.state.loggedIn" @click="settings">{{this.$store.state.user.username}}</div>
+                <div class="nav-item logo" v-if="this.$store.state.loggedIn" @click="settings">{{this.$store.state.user.username}}</div>
             </form>
         </div>
     </nav>  
@@ -96,5 +96,15 @@ export default {
 }
 .nav-item {
     padding-right: 15px;
+}
+
+.nav-item.logo, .nav-item {
+    cursor: pointer;
+}
+
+.empty-div {
+    background-color: aqua;
+    opacity: 0;
+    cursor: pointer;
 }
 </style>
