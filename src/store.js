@@ -254,7 +254,7 @@ export default new Vuex.Store({
                 // include it in the newBusiness obj before pushing to state
                 newBusiness.busId = res.data.id
                 state.businessList.push(newBusiness)
-                // dispatch("getPlaces")
+                dispatch("getPlaces")
                 commit("setShowsToFalse")
                 commit("setShowBusinessView")
             } catch (err) {
