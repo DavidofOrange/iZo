@@ -67,10 +67,10 @@ export default {
   color: #2c3e50;
 }
 body {
-  background-color: black;
-  background-image: url("./assets/Design2.png");
+  background-color: rgb(43, 43, 43);
+  background-image: url("./assets/iZO.png");
   background-repeat: no-repeat;
-  background-size: 100%;
+  background-size: 100px;
 }
 
 .components-container {

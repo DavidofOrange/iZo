@@ -1,20 +1,19 @@
 <template>
     <div>
-        <nav class="navbar navbar-light">
-            <span class="navbar-brand mb-0 h1 light" @click.prevent="goHome">IZAKA-YA' OPEN</span>
-            <span class="lead">Please Sign In</span>
+        <nav class="navbar">
+            <span class="navbar-brand mb-0 h1 light" @click.prevent="goHome"></span>
         </nav>
         <div class="form-container">
             <form class="form-group">
                 <div class="form-group">
-                    <label for="username">Username</label>
+                    <label class="label" for="username">Username</label>
                     <input type="text" class="form-control" id="username" v-model="username" placeholder="Enter username">
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
+                    <label class="label" for="exampleInputPassword1">Password</label>
                     <input type="password" class="form-control" id="exampleInputPassword1" v-model="password" placeholder="Password">
                 </div>
-                <button type="submit" class="btn btn-primary" @click.prevent="login">Login</button>
+                <button type="submit" class="btn btn-red" @click.prevent="login">Login</button>
                 <div class="login-account" @click.prevent="createAccount">Create Account</div>
             </form>
         </div>              
@@ -54,11 +53,19 @@ export default {
 .lead {
     margin-right: 1%;
 }
-
+.btn-red {
+    background-color: tomato;
+}
+exampleInputPassword1 {
+    margin-bottom: 20px;
+}
+.label {
+    color: white;
+}
 .login-account {
     cursor: pointer;
     margin-top: 5%;
-    color: rgb(0, 54, 36);
+    color: rgb(255, 0, 0);
 }
 
 .form-container {
@@ -73,6 +80,7 @@ export default {
 
 .navbar-brand.mb-0.h1 {
     margin-left: 1.5%;
+    color: white;
 }
 
 

@@ -1,15 +1,15 @@
 <template>
     <div>
-        <nav class="navbar navbar-light">
-            <span class="navbar-brand mb-0 h1" @click.prevent="goHome">IZAKA-YA' OPEN</span>
-            <span class="navbar-brand mb-0 h1">Business Account</span>
+        <nav class="navbar">
+            <span class="navbar-brand mb-0 h1" @click.prevent="goHome"></span>
+            <span class="navbar-brand h1">Business Account</span>
         </nav>
-        <div>Businesses</div>
+        <div id="biz">Businesses</div>
         <div class="accordion" id="accordionExample">
             <div class="card" @click="showCard(index)" v-for="(business, index) in this.$store.state.businessList" :key="index">
                 <div class="card-header" :id="`heading${collapseCounter[index]}`">
                     <h2 class="mb-0">
-                    <button class="btn btn-link" type="button" data-toggle="collapse" :data-target="`#collapse${collapseCounter[index]}`" aria-expanded="true" :aria-controls="`collapse${collapseCounter[index]}`">
+                    <button class="bus-btn" type="button" data-toggle="collapse" :data-target="`#collapse${collapseCounter[index]}`" aria-expanded="true" :aria-controls="`collapse${collapseCounter[index]}`">
                         {{business.busName}}
                     </button>
                     </h2>
@@ -25,8 +25,8 @@
                                 element: collapseCounter[index], 
                                 busId: business.busId})" id="customRange2" :ref="`capacity${collapseCounter[index]}`">
                     </div>
-                    <a href="#" class=" btn-secondary btn-lg active go-prem-btn" role="button" aria-pressed="true" v-show="business.subStatus !== 'active'" @click.prevent="goPremium({busId: business.busId, busName: business.busName, subStatus: business.subStatus})">Go Premium</a>
-                    <a href="#" class="btn btn-lg active bus-info-btn" role="button" aria-pressed="true" v-show="business.subStatus === 'active'" @click.prevent="updateFeatures({busId: business.busId, busName: business.busName, subStatus: business.subStatus})">Update Business Info</a>
+                    <a href="#" class="go-prem-btn" role="button" aria-pressed="true" v-show="business.subStatus !== 'active'" @click.prevent="goPremium({busId: business.busId, busName: business.busName, subStatus: business.subStatus})">Go Premium</a>
+                    <a href="#" class="bus-info-btn" role="button" aria-pressed="true" v-show="business.subStatus === 'active'" @click.prevent="updateFeatures({busId: business.busId, busName: business.busName, subStatus: business.subStatus})">Update Business Info</a>
                 </div>
             </div>
         </div>
@@ -94,7 +94,22 @@ export default {
     display: flex;
     justify-content: space-between;
 }
-
+a {
+    text-decoration: none;
+}
+.go-prem-btn {
+    background-color: rgb(197, 151, 0);
+    height: 30px;
+    width: 500px;
+}
+.form-group {}
+.bus-btn {
+    background-color: transparent;
+    border:none;    
+    color: white;
+    padding: 10px;
+    font-size: 1.2rem;
+}
 .btn.btn-secondary.btn-lg.active {
     margin-top: 2%;
 }
@@ -110,13 +125,27 @@ export default {
     border-style: solid;
     border-color: rgb(68, 68, 68);
 }
-
+#biz {
+    margin-top: 20px;
+    color: white;
+    font-size: larger;
+}
 .accordion {
     margin-left: auto;
     margin-right: auto;
     width: 50vw
 }
-
+.mb-0 {
+    color: white;
+    background-color: rgb(255, 59, 59);
+    border-radius: 10px;
+    height: 50px;
+    text-align: center;
+    margin-top: auto;
+}
+.card-body {
+    color: white;
+}
 @media screen and (max-width: 480px) {
     .accordion {
         width: 95vw;

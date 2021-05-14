@@ -1,8 +1,8 @@
 <template lang="">
     <div>
-        <nav class="navbar navbar-light">
-            <span class="navbar-brand mb-0 h1" @click.prevent="goHome">IZAKA-YA' OPEN</span>
-            <span class="navbar-brand mb-0 h1">Business Account</span>
+        <nav class="navbar">
+            <span class="navbar-brand h1" @click.prevent="goHome"></span>
+            <span class="navbar-brand h1">Business Account</span>
         </nav>
         <div class="hero-unit">
         <h1>iZO Premium Membership</h1><br/>
@@ -48,6 +48,10 @@ export default {
 .membership-info {
     margin: auto;
     width: 60vw;
+}
+.hero-unit {
+    margin-top: 100px;
+    color: rgb(212, 212, 212);
 }
     
 </style>

@@ -13,7 +13,7 @@
         <div class="container-fluid">
             <form class="d-flex justify-content-between">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" v-model="searchInput" @keydown.enter="search">
-                <button class="btn btn-outline-success" type="submit"  @click.prevent="search">Search</button>
+                <button class="btn" type="submit"  @click.prevent="search">Search</button>
             </form>
         </div>
     </nav>
@@ -85,13 +85,16 @@ export default {
     color: white;
     border: 1px solid red;
 }
-.navbar-brand, .nav-item{
+.navbar-brand {
     cursor: pointer;
     height: 40px;
+    color: white;
 }
 .container-fluid {
-    padding-right: 5px;
+    padding-right: 0px;
     padding-left: 5px;
 }
-
+.nav-item {
+    padding-right: 15px;
+}
 </style>

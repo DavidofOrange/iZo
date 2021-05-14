@@ -4,6 +4,7 @@
         class="gmap-default"
         :center="this.$store.state.centerCoords"
         :zoom="this.$store.state.zoom"
+        :optimzed="false"
         map-type-id="roadmap"
         :options="this.gmapOptions"
     >
@@ -13,7 +14,6 @@
             :marker="{lat: place.latitude, lng: place.longitude}"
             @click.native="renderInfoBox(place.name)"
         >
-        
         <InfoBoxTemp
             class="info-box"
             v-show="markers[place.name]"
@@ -92,11 +92,13 @@ export default {
     width: 100%;
     height: 88vh;
     outline: none;
+    z-index: 0;
 }
 
 .map-container {
     display: flex;
     position: relative;
+    z-index: 0;
 }
 
 </style>
