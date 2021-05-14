@@ -10,7 +10,7 @@ export default new Vuex.Store({
     state: {
         google: gmapApi,
         places: [{}],
-        centerCoords: { lat: 35.6806921503547 , lng: 139.75187940573224 },
+        centerCoords: { lat: 35.70899407043283, lng: 139.69923760587767},
         zoom: 15,
         loggedIn: false,
         showBusinessView: false,

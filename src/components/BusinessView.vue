@@ -25,7 +25,7 @@
                                 element: collapseCounter[index], 
                                 busId: business.busId})" id="customRange2" :ref="`capacity${collapseCounter[index]}`">
                     </div>
-                    <a href="#" class="go-prem-btn" role="button" aria-pressed="true" v-show="business.subStatus !== 'active'" @click.prevent="goPremium({busId: business.busId, busName: business.busName, subStatus: business.subStatus})">Go Premium</a>
+                    <a href="#" class="go-prem-btn premium" role="button" aria-pressed="true" v-show="business.subStatus !== 'active'" @click.prevent="goPremium({busId: business.busId, busName: business.busName, subStatus: business.subStatus})">Go Premium</a>
                     <a href="#" class="bus-info-btn" role="button" aria-pressed="true" v-show="business.subStatus === 'active'" @click.prevent="updateFeatures({busId: business.busId, busName: business.busName, subStatus: business.subStatus})">Update Business Info</a>
                 </div>
             </div>
@@ -98,9 +98,17 @@ a {
     text-decoration: none;
 }
 .go-prem-btn {
-    background-color: rgb(255, 255, 255);
+    padding: 0.5vh;
+    border-radius: 5px;
+    padding-left: 1vh;
+    padding-right: 1vh;
+    background-color: tomato;
+    color: rgb(255, 255, 255);
 }
-.form-group {}
+.form-group {
+
+}
+
 .bus-btn {
     background-color: transparent;
     border:none;    
@@ -119,9 +127,8 @@ a {
     padding-top: 0.1vh;
     padding-bottom: 0.1vh;
     color: rgb(255, 255, 255);
+    border-radius: 5px;
     background-color: tomato;
-    border-style: solid;
-    border-color: rgb(68, 68, 68);
 }
 #biz {
     margin-top: 20px;
