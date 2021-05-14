@@ -4,6 +4,7 @@
         class="gmap-default"
         :center="this.$store.state.centerCoords"
         :zoom="this.$store.state.zoom"
+        :optimzed="false"
         map-type-id="roadmap"
         :options="this.gmapOptions"
     >
@@ -13,16 +14,20 @@
             :marker="{lat: place.latitude, lng: place.longitude}"
             @click.native="renderInfoBox(place.name)"
         >
-        
         <InfoBoxTemp
             v-show="markers[place.name]"
             :place="place"
             @click="renderInfoBox(place.name)"
          />
+        <img v-show="place.capacity_status == 0 && place.sub_status == 'active'" src="../assets/open.png" />
+        <img v-show="place.capacity_status == 1 && place.sub_status == 'active'" src="../assets/seats_available.png" />
+        <img v-show="place.capacity_status == 2 && place.sub_status == 'active'" src="../assets/full.png" />
+        <img v-show="place.capacity_status == 3 && place.sub_status == 'active'" src="../assets/closed.png" />   
         <img v-show="place.capacity_status == 0 && place.sub_status !== 'active'" src="../assets/open.png" />
         <img v-show="place.capacity_status == 1 && place.sub_status !== 'active'" src="../assets/seats_available.png" />
         <img v-show="place.capacity_status == 2 && place.sub_status !== 'active'" src="../assets/full.png" />
         <img v-show="place.capacity_status == 3 && place.sub_status !== 'active'" src="../assets/closed.png" />   
+        
         </GmapCustomMarker>
 
     </GmapMap>        
@@ -86,11 +91,13 @@ export default {
     width: 100%;
     height: 88vh;
     outline: none;
+    z-index: 0;
 }
 
 .map-container {
     display: flex;
     position: relative;
+    z-index: 0;
 }
 
 /* .info-box {

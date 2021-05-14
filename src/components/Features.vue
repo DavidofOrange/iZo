@@ -1,7 +1,7 @@
 <template>
     <div>
-        <nav class="navbar navbar-light">
-            <span class="navbar-brand mb-0 h1" @click.prevent="goHome">IZAKA-YA' OPEN</span>
+        <nav class="navbar">
+            <span class="navbar-brand mb-0 h1" @click.prevent="goHome"></span>
             <span class="navbar-brand mb-0 h1">Add Business</span>
         </nav>
         <div>Update {{this.$store.state.currBusiness.busName}}</div>

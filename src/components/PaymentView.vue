@@ -1,8 +1,8 @@
 <template>
     <div>
-        <nav class="navbar navbar-light bg-light">
-            <span class="navbar-brand mb-0 h1" @click.prevent="goHome">IZAKA-YA' OPEN</span>
-            <span class="navbar-brand mb-0 h1">Business Account</span>
+        <nav class="navbar">
+            <span class="navbar-brand h1" @click.prevent="goHome"></span>
+            <span class="navbar-brand h1">Business Account</span>
         </nav>
         <div class="hero-unit">
         <h1>iZO Premium Membership</h1><br/>
@@ -43,7 +43,7 @@ export default {
         // Style Object documentation here: https://stripe.com/docs/js/appendix/style
         const style = {
         base: {
-            color: 'black',
+            color: 'grey',
             fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
             fontSmoothing: 'antialiased',
             fontSize: '14px',
@@ -108,9 +108,10 @@ export default {
 
 <style scoped>
 .payment-container {
-    margin-top: 15vh;
-    margin-left: 20vw;
-    margin-right: 20vw;
+    width: 90%;
+    margin-top: 5vh;
+    margin-left: auto;
+    margin-right: auto;
     padding: 5vh;
     border-radius: 20px;
     border: 1px solid;
@@ -120,7 +121,10 @@ export default {
 .card-input {
     border: 1px solid rgb(180, 180, 180);
     margin: auto;
+    height: 30px;
+    font-size: 2rem;
 }
+
 
 #custom-button {
     margin-top: 3vh;

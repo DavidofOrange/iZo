@@ -40,12 +40,11 @@ export default {
     cursor: pointer;
 }
 
-
 .details {
     margin-left: -60%
 }
 
-.card-body {
-    z-index: 20;
+.card {
+    background-color: rgb(43, 43, 43);
 }
 </style>    
