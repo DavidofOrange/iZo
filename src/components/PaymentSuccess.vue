@@ -1,7 +1,7 @@
 <template lang="">
     <div>
         <nav class="navbar navbar-light">
-            <span class="navbar-brand mb-0 h1" @click.prevent="goHome">IZAKA-YA' OPEN</span>
+            <div class="empty-div" @click="goHome">222222222</div>
             <span class="navbar-brand mb-0 h1">Business Account</span>
         </nav>
         <div class="hero-unit">
