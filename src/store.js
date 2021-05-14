@@ -138,16 +138,11 @@ export default new Vuex.Store({
 
         async getCoords({commit}, searchInput) {
             try {
-                // const data = await axios.get(`http://api.positionstack.com/v1/forward?access_key=398eab52cb4a639899b5f91cb6bed03a&query=${searchInput}`)
-
-                // const coords = {
-                //     lat: data.data.data[0].latitude,
-                //     lng: data.data.data[0].longitude
-                // }
+                const data = await axios.get(`http://api.positionstack.com/v1/forward?access_key=398eab52cb4a639899b5f91cb6bed03a&query=${searchInput}`)
 
                 const coords = {
-                    lat: 35.70545018149081,
-                    lng: 139.69784325507567
+                    lat: data.data.data[0].latitude,
+                    lng: data.data.data[0].longitude
                 }
 
                 commit("setCenter", coords)

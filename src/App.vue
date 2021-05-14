@@ -45,10 +45,16 @@ export default {
 
   beforeMount() {
     navigator.geolocation.getCurrentPosition((pos) => {
+      // const data = {
+      //   lat: pos.coords.latitude,
+      //   lng: pos.coords.longitude
+      // }
+      
       const data = {
-        lat: pos.coords.latitude,
-        lng: pos.coords.longitude
+        lat: 35.70545018149081,
+        lng: 139.69784325507567
       }
+
       this.$store.commit("setCenter", data)
     });
     this.$store.dispatch("getPlaces", this.$store.state.center)
