@@ -7,6 +7,7 @@ exports.seed = function(knex) {
       return knex('users').insert([
         {id: '3325b376-8853-4e6a-a876-0334a4e04ded', email: 'yosh@me.com', username: 'yoshio', password: 'yosh', user_type: 'Business', stripe_id: 'cus_JTDOYSE2dVRltj'},
         {id: '6d237944-0e2d-4f33-8d0a-47354978dde1', email: 'wiru@me.com', username: 'wiru', password: 'wiru', user_type: 'Personal'},
+        {id: '2936405e-c6d7-4995-8b5d-cff0da0d2e0f', email: 'rus@me.com', username: 'russell', password: 'rus', user_type: 'Business', stripe_id: 'cus_JTmRgJFDALITEU'},
       ]);
     });
 };
