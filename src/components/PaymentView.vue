@@ -14,7 +14,8 @@
             <label>Card CVC</label>
             <div id="card-cvc" class="card-input"></div>
             <div id="card-error"></div>
-            <button id="custom-button" @click="createToken">Process Payment</button>
+            <!-- <button id="custom-button" @click="createToken">Process Payment</button> -->
+            <h3>Not Ready for Public</h3>
         </div>
     </div>
 </template>
@@ -141,4 +142,9 @@ label {
 #card-error {
   color: red;
 }
+
+h3 {
+    color: black;
+}
+
 </style>
