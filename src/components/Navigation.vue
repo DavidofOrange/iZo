@@ -1,6 +1,5 @@
 <template>
     <div class="nav-container">
-<<<<<<< HEAD
     <nav class="navbar">
         <div class="container-fluid">
             <div class="empty-div">222222222</div>
@@ -19,26 +18,6 @@
         </div>
     </nav>
     <div class="hidden-map" ref="myRef"></div>
-=======
-        <nav class="navbar">
-            <div class="container-fluid">
-                <div class="empty-div">222222222</div>
-                <form class="d-flex">
-                    <div class="nav-item signin" v-if="!this.$store.state.loggedIn" @click="login">Sign In</div>
-                    <div class="nav-item" v-if="this.$store.state.loggedIn" @click="settings">{{this.$store.state.user.username}}</div>
-                </form>
-            </div>
-        </nav>  
-        <nav class="contain">
-            <div class="container-fluid">
-                <form class="d-flex justify-content-between">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" v-model="searchInput" @keydown.enter="search">
-                    <button class="btn" type="submit"  @click.prevent="search">Search</button>
-                </form>
-            </div>
-        </nav>
-        <div class="hidden-map" ref="myRef"></div>
->>>>>>> f11a76a68a3e2ca5620dd2bb17b181d2c83fad94
     </div>
 </template>
 
