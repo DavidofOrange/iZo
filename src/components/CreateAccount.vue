@@ -1,8 +1,8 @@
 <template>
     <div>
         <nav class="navbar">
-            <span class="navbar-brand mb-0 h1" @click.prevent="goHome"></span>
-            <span class="navbar-brand mb-0 h1">Create Account</span>
+            <span class="navbar-brand h1" @click.prevent="goHome"></span>
+            <span class="navbar-brand h1">Create Account</span>
         </nav>
         <div class="form-container">
             <form class="form">
@@ -13,7 +13,6 @@
                 <div class="form-group">
                     <label for="exampleInputEmail1">Email address</label>
                     <input type="email" class="form-control" id="exampleInputEmail1" v-model="email" aria-describedby="emailHelp" placeholder="Enter email">
-                    <small id="emailHelp" class="form-text text-muted">We'll maybe never share your email with anyone else.</small>
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlSelect1">Type of Account</label>
@@ -112,7 +111,7 @@ export default {
 }
 
 .form-control {
-    color: rgb(102, 102, 102);
+    color:white
 }
 
 .navbar-brand.mb-0.h1 {
@@ -121,6 +120,12 @@ export default {
 }
 .exampleInputPassword1 {
     box-sizing:content-box;
+}
+.btn.btn-primary {
+    background-color: tomato;
+}
+.white-text {
+    color: white;
 }
 
 </style>
