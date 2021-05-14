@@ -130,7 +130,7 @@ export default {
     margin-top: 3vh;
     height: 30px;
     border-radius: 10px;
-    background-color: rgb(53, 125, 219);
+    background-color: tomato;
     color: white;
 }
 

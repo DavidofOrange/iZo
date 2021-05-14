@@ -12,7 +12,7 @@
             <br/><br/><b>Reach more business for only 500yen/month!</b>
         </p>
         <p>
-            <a class="btn btn-primary btn-large" @click.prevent="subscribe">
+            <a id="sub-btn" class="btn btn-primary btn-large" @click.prevent="subscribe">
             Subscribe
             </a>
         </p>
@@ -54,4 +54,7 @@ export default {
     color: rgb(212, 212, 212);
 }
     
+#sub-btn {
+    background-color: tomato;
+}
 </style>
