@@ -87,4 +87,5 @@ exampleInputPassword1 {
 .btn.btn-primary {
    margin-top: 5%; 
 } 
+
 </style>
