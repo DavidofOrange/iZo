@@ -121,7 +121,7 @@ a {
     padding-top: 0.1vh;
     padding-bottom: 0.1vh;
     color: rgb(255, 255, 255);
-    background-color: rgb(70, 106, 146);
+    background-color: tomato;
     border-style: solid;
     border-color: rgb(68, 68, 68);
 }
