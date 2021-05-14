@@ -138,11 +138,16 @@ export default new Vuex.Store({
 
         async getCoords({commit}, searchInput) {
             try {
-                const data = await axios.get(`http://api.positionstack.com/v1/forward?access_key=398eab52cb4a639899b5f91cb6bed03a&query=${searchInput}`)
+                // const data = await axios.get(`http://api.positionstack.com/v1/forward?access_key=398eab52cb4a639899b5f91cb6bed03a&query=${searchInput}`)
+
+                // const coords = {
+                //     lat: data.data.data[0].latitude,
+                //     lng: data.data.data[0].longitude
+                // }
 
                 const coords = {
-                    lat: data.data.data[0].latitude,
-                    lng: data.data.data[0].longitude
+                    lat: 35.70545018149081,
+                    lng: 139.69784325507567
                 }
 
                 commit("setCenter", coords)
@@ -236,7 +241,7 @@ export default new Vuex.Store({
 
         },
 
-        async addBusiness( { state, commit }, newBusiness ) {
+        async addBusiness( { state, commit, dispatch }, newBusiness ) {
             try {
                 // add new bussiness
                 const res = await axios.post('/api/businesses', newBusiness)
@@ -249,6 +254,7 @@ export default new Vuex.Store({
                 // include it in the newBusiness obj before pushing to state
                 newBusiness.busId = res.data.id
                 state.businessList.push(newBusiness)
+                // dispatch("getPlaces")
                 commit("setShowsToFalse")
                 commit("setShowBusinessView")
             } catch (err) {
