@@ -1,5 +1,7 @@
 # iza-kaya-open
 
+![alt text](izomobile.PNG?raw=true)
+
 ## Project setup
 ```
 npm install
