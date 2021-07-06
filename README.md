@@ -1,6 +1,8 @@
 # iza-kaya-open
 
 ![alt text](izomobile.PNG?raw=true)
+![alt text](izologin.PNG?raw=true)
+
 
 ## Project setup
 ```
